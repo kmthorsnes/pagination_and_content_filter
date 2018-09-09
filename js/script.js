@@ -4,12 +4,24 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
 
 // Add variables that store DOM elements you will need to reference and/or manipulate
-$("#hide").click(function(){
-    $(".student-list").hide();
-});
-$("#show").click(function(){
-    $(".student-list").show();
-});
+
+// Variable that counts number of student
+let numItems = $('.student-details').length;
+// Maximum number of students per page
+const StudentsPerPage = 10;
+// Variable that calculates the numbers of pagination.  
+let totalPages = Math.ceil(numItems / StudentsPerPage);
+
+console.log(totalPages, numItems, StudentsPerPage);
+
+// $("#hide").click(function(){
+//     $(".student-list").hide();
+// });
+// $("#show").click(function(){
+//     $(".student-list").show();
+// });
+
+
 
 
 
