@@ -4,6 +4,12 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
 
 // Add variables that store DOM elements you will need to reference and/or manipulate
+$("#hide").click(function(){
+    $(".student-list").hide();
+});
+$("#show").click(function(){
+    $(".student-list").show();
+});
 
 
 
