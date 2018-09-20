@@ -57,3 +57,27 @@ $('.student-item').addClass("after");
 // });
 
 
+// From the study guide:
+/* 
+// const showPage = (list, page) => {
+    // loop over items in the list parameter
+    // if the index of a list item is >= the index of the first item that should be shown on the page, && the list item index is <= the index of the last item that should be shown on the page, show it
+    // else hide it
+//}
+
+
+const appendPageLinks = (list) => {
+    // if pagination already exists, remove it
+    // determine how many pages are needed for the list by dividing the total number of list items by the max number of items per page
+    // create a div, give it the “pagination” class, and append it to the .page div
+    // add a ul to the “pagination” div
+    // for every page
+    // add li and a tags with the page number text
+    // add an event listener to each a tag, or add an event listener to the pagination div, and use event delegation to target the a tags to define what happens they are clicked
+    // calls the showPage function to display the appropriate page
+    // loop over pagination links to remove active class from all
+    // add the active class to the link that was just clicked, otherwise known as the
+    event.target
+}
+
+ */
