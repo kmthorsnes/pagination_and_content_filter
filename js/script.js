@@ -42,11 +42,8 @@ $('.student-item').addClass("after");
 // Create and append the pagination links - Creating a function that can do this is a good approach
 
 
-
-
 // Add functionality to the pagination buttons so that they show and hide the correct items
 // Tip: If you created a function above to show/hide list items, it could be helpful here
-
 
 
 // $("#hide").click(function(){
