@@ -62,6 +62,7 @@ $('.student-item').addClass("after");
     // else hide it
 //}
 
+// Because it's fun to make commits from 10 000 feet :) 
 
 const appendPageLinks = (list) => {
     // if pagination already exists, remove it
