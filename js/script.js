@@ -17,26 +17,32 @@ console.log(totalPages, numItems, StudentsPerPage);
 // Create a function to hide all of the items in the list excpet for the ten you want to show
 // Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
 
+const showPage = (list, page) => {
+    // loop over items in the list parameter
+        // if the index of a list item is >= the index of the first item that should be shown on
+    //the page, && the list item index is <= the index of the last item that should be shown on the page, show it
+        // else hide it
+}
+
 $("#hide").click(function(){
     $(".student-item").hide();
 });
-
 
 $("#show").click(function(){
     $(".student-item").show();
 });
 
-
+// Hides all students
 $(".student-item").hide();
 
-// Shows only the first 10 students.
-// $('.student-item:lt(10)').show();
-$(".student-item").slice(0,StudentsPerPage).show();
+// Shows only the first 10 students. // should maybe input number of students? 
+$('.student-item:lt(10)').show();
+
+// Adds class for pagination
 
 
 // $('.student-list').not(':visible').hide();
-
-$('.student-item').addClass("after");
+//$('.student-item').addClass("after");
 
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
@@ -77,5 +83,4 @@ const appendPageLinks = (list) => {
     // add the active class to the link that was just clicked, otherwise known as the
     event.target
 }
-
  */
