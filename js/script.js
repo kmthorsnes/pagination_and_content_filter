@@ -12,31 +12,38 @@ const StudentsPerPage = 10;
 // Variable that calculates the numbers of pagination.  
 let totalPages = Math.ceil(numItems / StudentsPerPage);
 
-console.log(totalPages, numItems, StudentsPerPage);
+let showStudent = document.getElementsByClassName('student-item');
+
+
+console.log(totalPages, numItems, StudentsPerPage, showStudent, showStudent.length);
 
 // Create a function to hide all of the items in the list excpet for the ten you want to show
 // Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
 
-const showPage = (list, page) => {
-    // loop over items in the list parameter
-        // if the index of a list item is >= the index of the first item that should be shown on
-    //the page, && the list item index is <= the index of the last item that should be shown on the page, show it
-        // else hide it
-}
+const showPage = () =>
+{
+for (i = StudentsPerPage; i < showStudent.length; i ++) {
+    showStudent[i].style.display = 'none';
+    }
+};
 
-$("#hide").click(function(){
-    $(".student-item").hide();
-});
+// Runs showPage function
+showPage();
 
-$("#show").click(function(){
-    $(".student-item").show();
-});
 
-// Hides all students
-$(".student-item").hide();
+// $("#hide").click(function(){
+//     $(".student-item").hide();
+// });
 
-// Shows only the first 10 students. // should maybe input number of students? 
-$('.student-item:lt(10)').show();
+// $("#show").click(function(){
+//     $(".student-item").show();
+// });
+
+// // Hides all students
+// $(".student-item").hide();
+
+// // Shows only the first 10 students. // should maybe input number of students? 
+// $('.student-item:lt(10)').show();
 
 // Adds class for pagination
 
@@ -67,8 +74,6 @@ $('.student-item:lt(10)').show();
     // if the index of a list item is >= the index of the first item that should be shown on the page, && the list item index is <= the index of the last item that should be shown on the page, show it
     // else hide it
 //}
-
-// Because it's fun to make commits from 10 000 feet :) 
 
 const appendPageLinks = (list) => {
     // if pagination already exists, remove it
