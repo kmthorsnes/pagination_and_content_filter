@@ -14,7 +14,7 @@ const totalPages = Math.ceil(numberOfStudents / StudentsPerPage);
 // Variable for console.log showing all studentinfo
 const showStudent = document.getElementsByClassName('student-item');
 
-console.log(numberOfStudents, StudentsPerPage, totalPages, /* showStudent */);
+console.log(numberOfStudents, StudentsPerPage, totalPages /* showStudent */);
 
 // Create a function to hide all of the items in the list excpet for the ten you want to show
 // Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
@@ -40,11 +40,16 @@ const appendPageLinks = (list) => {
     newDiv.className = "pagination";
     pageDiv.appendChild(newDiv);
     let newUl = document.createElement("ul");
+    let Ul = document.getElementsByName("ul");
     newDiv.appendChild(newUl);
+    
 
     // for loop in her
-    for (i = 0; i < totalPages; i++)
-    
+    for (i = 0; i < totalPages; i++){
+        let newLi = document.createElement("li");
+        newUl.appendChild(newLi);
+    }
+        
     // her må jeg legge inn at hvert tall skal VRDisplayCapabilities. //
 
     console.log(pageDiv, newDiv);
