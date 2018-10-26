@@ -33,24 +33,27 @@ showPage();
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
 const appendPageLinks = (list) => {
-    // determine how many pages are needed for the list by dividing the total number of list items by the max number of items per page
-    // create a div, , and append it to the .page div
     const pageDiv = document.getElementsByClassName("page")[0];
     let newDiv = document.createElement("div");
     newDiv.className = "pagination";
     pageDiv.appendChild(newDiv);
+    const pageUl = document.getElementsByName("ul");
     let newUl = document.createElement("ul");
-    let Ul = document.getElementsByName("ul");
     newDiv.appendChild(newUl);
-    
 
-    // for loop in her
-    for (i = 0; i < totalPages; i++){
-        let newLi = document.createElement("li");
+    // for loop som lager sidevisningen.
+    for (i = 0; i < totalPages; i++) {
+        const newLi = document.createElement("li");
+        const newA = document.createElement("a");
         newUl.appendChild(newLi);
+        newLi.appendChild(newA);
+        newA.innerHTML += i+1;
     }
-        
-    // her må jeg legge inn at hvert tall skal VRDisplayCapabilities. //
+    document.querySelector("a").addEventListener("click", function () {
+        //document.getElementById("demo").innerHTML = "Hello World";
+    });
+
+    
 
     console.log(pageDiv, newDiv);
 };
