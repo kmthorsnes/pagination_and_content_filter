@@ -21,7 +21,7 @@ console.log(numberOfStudents, StudentsPerPage, totalPages /* showStudent */);
 
 const showPage = (list, page) => {
     for (i = 0; i < showStudent.length; i++)
-        if (i < StudentsPerPage){
+        if (i < StudentsPerPage) {
             showStudent[i].style.display = 'block';
         } else {
             showStudent[i].style.display = 'none';
@@ -33,28 +33,31 @@ showPage();
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
 const appendPageLinks = (list) => {
-    const pageDiv = document.getElementsByClassName("page")[0];
+    let pageDiv = document.getElementsByClassName("page")[0];
     let newDiv = document.createElement("div");
     newDiv.className = "pagination";
     pageDiv.appendChild(newDiv);
-    const pageUl = document.getElementsByName("ul");
+    let pageUl = document.getElementsByName("ul");
     let newUl = document.createElement("ul");
     newDiv.appendChild(newUl);
 
-    // for loop som lager sidevisningen.
+    // loop for creating .
     for (i = 0; i < totalPages; i++) {
-        const newLi = document.createElement("li");
-        const newA = document.createElement("a");
+        let newLi = document.createElement("li");
+        let newA = document.createElement("a");
         newUl.appendChild(newLi);
         newLi.appendChild(newA);
-        newA.innerHTML += i+1;
-    }
-    document.querySelector("a").addEventListener("click", function () {
-        //document.getElementById("demo").innerHTML = "Hello World";
-    });
-
+        newA.innerHTML += i + 1; 
+        let links = document.querySelectorAll("a"); 
+        links[i].classList.remove("active");
+        links[i].addEventListener('click', () => {
+            this.classList.toggle('clicked');
+            console.log("kuk"); 
+        });
+        
+    };
     
-
+    
     console.log(pageDiv, newDiv);
 };
 appendPageLinks();
