@@ -11,25 +11,37 @@ const numberOfStudents = document.getElementsByClassName('student-item').length;
 const StudentsPerPage = 10;
 // Variable that calculates the numbers of pagination.  
 const totalPages = Math.ceil(numberOfStudents / StudentsPerPage);
-// Variable for console.log showing all studentinfo
+// Getting all student
 const showStudent = document.getElementsByClassName('student-item');
-
-console.log(numberOfStudents, StudentsPerPage, totalPages /* showStudent */);
+console.log(numberOfStudents, StudentsPerPage, totalPages);
 
 // Create a function to hide all of the items in the list excpet for the ten you want to show
 // Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
 
-const showPage = (list, page) => {
-    for (i = 0; i < showStudent.length; i++)
-        if (i < StudentsPerPage) {
+const showPage = (StudentsPerPage, page) => {
+    for (i = 0; i < numberOfStudents; i++)
+        if (i < (StudentsPerPage *page)
+        && ( i > 
+            (StudentsPerPage * page)
+            -
+            (StudentsPerPage * (page-1))
+            
+            
+            
+            )
+              )
+            
+        
+        {
             showStudent[i].style.display = 'block';
         } else {
             showStudent[i].style.display = 'none';
-        }
+        } 
+   
 };
 
 // Runs showPage function
-showPage();
+showPage(StudentsPerPage,1);
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
 const appendPageLinks = (list) => {
@@ -49,13 +61,10 @@ const appendPageLinks = (list) => {
         newLi.appendChild(newA);
         newA.innerHTML += i + 1; 
         let links = document.querySelectorAll("a"); 
-        links[i].classList.remove("active");
-        links[i].addEventListener('click', () => {
-            this.classList.toggle('clicked');
-            console.log("kuk"); 
-        });
-        
+        links[i].classList.remove("active");        
     };
+
+    
     
     
     console.log(pageDiv, newDiv);
