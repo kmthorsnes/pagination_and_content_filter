@@ -40,8 +40,7 @@ const showPage = (StudentsPerPage, page) => {
 
 };
 
-// Runs showPage function and starts on first page
-showPage(StudentsPerPage, 1);
+
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
 const appendPageLinks = (StudentsPerPage) => {
@@ -54,7 +53,7 @@ const appendPageLinks = (StudentsPerPage) => {
     let pageUl = document.getElementsByName("ul");
     let newUl = document.createElement("ul");
     newDiv.appendChild(newUl);
-
+    
     // loop for creating 
     for (i = 0; i < totalPages; i++) {
         let newLi = document.createElement("li");
@@ -63,22 +62,22 @@ const appendPageLinks = (StudentsPerPage) => {
         newLi.appendChild(newA);
         newA.innerHTML += i + 1; 
         let links = document.querySelectorAll("a"); 
-        links[i].classList.remove("active");
         links[i].addEventListener("click", function () {
-            console.log(this);
-            page = this;
-            links[this].classList.add("active");
+            for (i = 0; i < totalPages; i++) {
+                let links = document.querySelectorAll("a"); 
+                links[i].classList.remove("active"); 
+            }
+            console.log(this)
+            this.classList.add("active");
             showPage(StudentsPerPage, this);            
         });
-
     };
-
-    
-    
-    
-    console.log(pageDiv, newDiv);
+    // console.log(pageDiv, newDiv);
 };
+// Runs appenPageLinks for creating pagination
 appendPageLinks();
+// Runs showPage function and starts on first page
+showPage(StudentsPerPage, 2);
 
 // Add functionality to the pagination buttons so that they show and hide the correct items
 // Tip: If you created a function above to show/hide list items, it could be helpful here
