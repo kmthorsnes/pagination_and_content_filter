@@ -20,7 +20,7 @@ console.log(numberOfStudents, StudentsPerPage, totalPages);
 // Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
 
 const showPage = (StudentsPerPage, page) => {
-    for (i = 0; i < numberOfStudents; i++) 
+    for (i = 0; i < numberOfStudents; i++)
         if (
             (i >=
                 (
@@ -32,7 +32,7 @@ const showPage = (StudentsPerPage, page) => {
             (i <
                 (StudentsPerPage * page)
             )
-        ) {
+            ) {
             showStudent[i].style.display = 'block';
         } else {
             showStudent[i].style.display = 'none';
@@ -41,42 +41,40 @@ const showPage = (StudentsPerPage, page) => {
 };
 
 // Runs showPage function and starts on first page
-showPage(StudentsPerPage, 1);
+showPage(StudentsPerPage, 2);
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
 const appendPageLinks = (StudentsPerPage) => {
-    // removes pagination if it already exists
+    // removes pagination if it already exists:
     document.getElementsByClassName("pagination").remove;
+    // Selects the existing page div
     let pageDiv = document.getElementsByClassName("page")[0];
+    // Creates new the new div, and names it and appends it to the existing one
     let newDiv = document.createElement("div");
     newDiv.className = "pagination";
     pageDiv.appendChild(newDiv);
-    let pageUl = document.getElementsByName("ul");
+    // creates new list and appends it to the newly created div
     let newUl = document.createElement("ul");
     newDiv.appendChild(newUl);
 
-    // loop for creating 
     for (i = 0; i < totalPages; i++) {
+        // creates li and a tags for all pages
         let newLi = document.createElement("li");
         let newA = document.createElement("a");
         newUl.appendChild(newLi);
         newLi.appendChild(newA);
-        newA.innerHTML += i + 1; 
-        let links = document.querySelectorAll("a"); 
-        links[i].classList.remove("active");
+        // adds pagination "+1" for zero indexing
+        newA.innerHTML += i + 1;
+        // selects pagination links and removes the active class from all
+        let links = document.querySelectorAll("a");
+        links[i].classList.remove('active');
+        // adds eventlistener for all pagination links
         links[i].addEventListener("click", function () {
+            event.target.classList.add("active");
             console.log(this);
-            page = this;
-            links[this].classList.add("active");
-            showPage(StudentsPerPage, this);            
         });
-
     };
-
     
-    
-    
-    console.log(pageDiv, newDiv);
 };
 appendPageLinks();
 
