@@ -15,33 +15,33 @@ const totalPages = Math.ceil(numberOfStudents / StudentsPerPage);
 const showStudent = document.getElementsByClassName('student-item');
 console.log(numberOfStudents, StudentsPerPage, totalPages);
 
+
 // Create a function to hide all of the items in the list excpet for the ten you want to show
 // Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
 
 const showPage = (StudentsPerPage, page) => {
     for (i = 0; i < numberOfStudents; i++)
-        if (i < (StudentsPerPage *page)
-        && ( i > 
-            (StudentsPerPage * page)
-            -
-            (StudentsPerPage * (page-1))
-            
-            
-            
+        if (
+
+            (i >=
+                (
+                    (StudentsPerPage * page) -
+                    (StudentsPerPage)
+                )
             )
-              )
-            
-        
-        {
+            &&
+            (i <
+                (StudentsPerPage * page))
+        ) {
             showStudent[i].style.display = 'block';
         } else {
             showStudent[i].style.display = 'none';
-        } 
-   
+        }
+
 };
 
 // Runs showPage function
-showPage(StudentsPerPage,1);
+showPage(StudentsPerPage, 1);
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
 const appendPageLinks = (list) => {
