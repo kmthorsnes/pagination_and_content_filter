@@ -20,9 +20,8 @@ console.log(numberOfStudents, StudentsPerPage, totalPages);
 // Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
 
 const showPage = (StudentsPerPage, page) => {
-    for (i = 0; i < numberOfStudents; i++)
+    for (i = 0; i < numberOfStudents; i++) 
         if (
-
             (i >=
                 (
                     (StudentsPerPage * page) -
@@ -31,7 +30,8 @@ const showPage = (StudentsPerPage, page) => {
             )
             &&
             (i <
-                (StudentsPerPage * page))
+                (StudentsPerPage * page)
+            )
         ) {
             showStudent[i].style.display = 'block';
         } else {
@@ -40,11 +40,13 @@ const showPage = (StudentsPerPage, page) => {
 
 };
 
-// Runs showPage function
+// Runs showPage function and starts on first page
 showPage(StudentsPerPage, 1);
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
-const appendPageLinks = (list) => {
+const appendPageLinks = (StudentsPerPage) => {
+    // removes pagination if it already exists
+    document.getElementsByClassName("pagination").remove;
     let pageDiv = document.getElementsByClassName("page")[0];
     let newDiv = document.createElement("div");
     newDiv.className = "pagination";
@@ -53,7 +55,7 @@ const appendPageLinks = (list) => {
     let newUl = document.createElement("ul");
     newDiv.appendChild(newUl);
 
-    // loop for creating .
+    // loop for creating 
     for (i = 0; i < totalPages; i++) {
         let newLi = document.createElement("li");
         let newA = document.createElement("a");
@@ -61,7 +63,14 @@ const appendPageLinks = (list) => {
         newLi.appendChild(newA);
         newA.innerHTML += i + 1; 
         let links = document.querySelectorAll("a"); 
-        links[i].classList.remove("active");        
+        links[i].classList.remove("active");
+        links[i].addEventListener("click", function () {
+            console.log(this);
+            page = this;
+            links[this].classList.add("active");
+            showPage(StudentsPerPage, this);            
+        });
+
     };
 
     
