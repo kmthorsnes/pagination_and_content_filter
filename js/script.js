@@ -41,7 +41,7 @@ const showPage = (list, pageNumber) => {
 };
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
-const appendPageLinks = (StudentsPerPage) => {
+const appendPageLinks = (list) => {
     // removes pagination if it already exists
     document.getElementsByClassName("pagination").remove;
     let pageDiv = document.getElementsByClassName("page")[0];
@@ -65,9 +65,9 @@ const appendPageLinks = (StudentsPerPage) => {
                 let links = document.querySelectorAll("a"); 
                 links[i].classList.remove("active");
             }
-            console.log(this);
             this.classList.add("active");
-            showPage(showStudent, this);            
+            pageList = (document.getElementsByClassName('active')[0].innerHTML);
+            showPage(StudentsPerPage, pageList );            
         });
     };
     // console.log(pageDiv, newDiv);
