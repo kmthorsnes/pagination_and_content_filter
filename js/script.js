@@ -19,18 +19,18 @@ console.log(numberOfStudents, StudentsPerPage, totalPages);
 // Create a function to hide all of the items in the list excpet for the ten you want to show
 // Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
 
-const showPage = (StudentsPerPage, page) => {
+const showPage = (list, pageNumber) => {
     for (i = 0; i < numberOfStudents; i++) 
         if (
             (i >=
                 (
-                    (StudentsPerPage * page) -
-                    (StudentsPerPage)
+                    (list * pageNumber) -
+                    (list)
                 )
             )
             &&
             (i <
-                (StudentsPerPage * page)
+                (list * pageNumber)
             )
         ) {
             showStudent[i].style.display = 'block';
@@ -39,8 +39,6 @@ const showPage = (StudentsPerPage, page) => {
         }
 
 };
-
-
 
 // Create and append the pagination links - Creating a function that can do this is a good approach
 const appendPageLinks = (StudentsPerPage) => {
@@ -54,7 +52,7 @@ const appendPageLinks = (StudentsPerPage) => {
     let newUl = document.createElement("ul");
     newDiv.appendChild(newUl);
     
-    // loop for creating 
+    // loop for creating Li and a tags for pagination
     for (i = 0; i < totalPages; i++) {
         let newLi = document.createElement("li");
         let newA = document.createElement("a");
@@ -65,11 +63,11 @@ const appendPageLinks = (StudentsPerPage) => {
         links[i].addEventListener("click", function () {
             for (i = 0; i < totalPages; i++) {
                 let links = document.querySelectorAll("a"); 
-                links[i].classList.remove("active"); 
+                links[i].classList.remove("active");
             }
-            console.log(this)
+            console.log(this);
             this.classList.add("active");
-            showPage(StudentsPerPage, this);            
+            showPage(showStudent, this);            
         });
     };
     // console.log(pageDiv, newDiv);
