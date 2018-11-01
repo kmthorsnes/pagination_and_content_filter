@@ -109,22 +109,23 @@ const searchField = () => {
     
     btn.onclick = function () { 
         console.log("Thank you for clicking me <3");
+        filter = input.value.toLocaleUpperCase();
+        ul = document.getElementsByClassName("student-list")[0];
+        li = ul.getElementsByTagName("li");
+        console.log(li.length);
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("h3")[0];
+            console.log(a);
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                showStudent[i].style.display = "block";
+            } else {
+                showStudent[i].style.display = "none";
+            }
+        }
     
     };
 
-    filter = input.value.toLocaleUpperCase();
-    ul = document.getElementsByClassName("student-list")[0];
-    li = ul.getElementsByTagName("li");
-    console.log(li.length);
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("h3")[0];
-        console.log(a);
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            showStudent[i].style.display = "block"; 
-        } else {
-            showStudent[i].style.display = "none";
-        }
-    }
+
 };
 
 
