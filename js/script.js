@@ -3,34 +3,31 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
 
-// Add variables that store DOM elements you will need to reference and/or manipulate
+/// Add variables that store DOM elements you will need to reference and/or manipulate
 
-// Variable that counts number of student
+// Variable that counts number of students
 const numberOfStudents = document.getElementsByClassName('student-item').length;
 // Maximum number of students per page
-const StudentsPerPage = 10;
+const studentsPerPage = 10;
 // Variable that calculates the numbers of pagination.  
-const totalPages = Math.ceil(numberOfStudents / StudentsPerPage);
-// Getting all student
+const totalPages = Math.ceil(numberOfStudents / studentsPerPage);
+// Getting all student info
 const showStudent = document.getElementsByClassName('student-item');
-console.log(numberOfStudents, StudentsPerPage, totalPages);
 
+// Create a function that hides all students except the 10 we want to show
 
-// Create a function to hide all of the items in the list excpet for the ten you want to show
-// Tip: Keep in mind that with a list of 54 studetns, the last page will only display four
-
-const showPage = (StudentsPerPage, page) => {
-    for (i = 0; i < numberOfStudents; i++)
+const showPage = (list, pageNumber) => {
+    for (i = 0; i < numberOfStudents; i++) 
         if (
             (i >=
                 (
-                    (StudentsPerPage * page) -
-                    (StudentsPerPage)
+                    (list * pageNumber) -
+                    (list)
                 )
             )
             &&
             (i <
-                (StudentsPerPage * page)
+                (list * pageNumber)
             )
             ) {
             showStudent[i].style.display = 'block';
@@ -40,12 +37,9 @@ const showPage = (StudentsPerPage, page) => {
 
 };
 
-// Runs showPage function and starts on first page
-showPage(StudentsPerPage, 2);
-
-// Create and append the pagination links - Creating a function that can do this is a good approach
-const appendPageLinks = (StudentsPerPage) => {
-    // removes pagination if it already exists:
+// Creates and appends the pagination links
+const appendPageLinks = () => {
+    // removes pagination if it already exists
     document.getElementsByClassName("pagination").remove;
     // Selects the existing page div
     let pageDiv = document.getElementsByClassName("page")[0];
@@ -56,27 +50,32 @@ const appendPageLinks = (StudentsPerPage) => {
     // creates new list and appends it to the newly created div
     let newUl = document.createElement("ul");
     newDiv.appendChild(newUl);
-
+    
+    // loop for creating Li and a tags for pagination
     for (i = 0; i < totalPages; i++) {
         // creates li and a tags for all pages
         let newLi = document.createElement("li");
         let newA = document.createElement("a");
         newUl.appendChild(newLi);
         newLi.appendChild(newA);
-        // adds pagination "+1" for zero indexing
-        newA.innerHTML += i + 1;
-        // selects pagination links and removes the active class from all
-        let links = document.querySelectorAll("a");
-        links[i].classList.remove('active');
-        // adds eventlistener for all pagination links
+        newA.innerHTML += i + 1; 
+        let links = document.querySelectorAll("a"); 
         links[i].addEventListener("click", function () {
-            event.target.classList.add("active");
-            console.log(this);
+            for (i = 0; i < totalPages; i++) {
+                let links = document.querySelectorAll("a"); 
+                links[i].classList.remove("active");
+            }
+            this.classList.add("active");
+            currentPage = (document.getElementsByClassName('active')[0].innerHTML);
+            showPage(studentsPerPage, currentPage);
+            console.log(currentPage);            ;
         });
     };
-    
 };
+// Runs appenPageLinks for creating pagination
 appendPageLinks();
+// Runs showPage function and starts on first page
+showPage(studentsPerPage, 1);
 
 // Add functionality to the pagination buttons so that they show and hide the correct items
 // Tip: If you created a function above to show/hide list items, it could be helpful here
