@@ -30,9 +30,9 @@ const showPage = (list, pageNumber) => {
                 (list * pageNumber)
             )
             ) {
-            showStudent[i].style.display = 'block';
+            showStudent[i].style.display = "block";
         } else {
-            showStudent[i].style.display = 'none';
+            showStudent[i].style.display = "none";
         }
 
 };
@@ -68,7 +68,7 @@ const appendPageLinks = () => {
             this.classList.add("active");
             currentPage = (document.getElementsByClassName('active')[0].innerHTML);
             showPage(studentsPerPage, currentPage);
-            console.log(currentPage);            ;
+            console.log(currentPage);
         });
     };
 };
@@ -93,7 +93,7 @@ const searchField = () => {
     searchField.title = "Type in a name";
     searchDiv.appendChild(searchField);
 
-    searchField.id = "SearchInput";
+    searchField.id = "Input";
     var btn = document.createElement("button");
     btn.className = "student-search button";
     let btnTxt = document.createTextNode("Search"); 
@@ -105,20 +105,29 @@ const searchField = () => {
 
     // Creates search functionality // Code from:  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_list
     let input, filter, ul, a, i;
-    input = document.getElementById("searchInput");
+    input = document.getElementById("Input");
+    
+    btn.onclick = function () { 
+        console.log("Thank you for clicking me <3");
+    
+    };
+
     filter = input.value.toLocaleUpperCase();
-    ul = getElementsByClassName("student-list");
+    ul = document.getElementsByClassName("student-list")[0];
     li = ul.getElementsByTagName("li");
+    console.log(li.length);
     for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
+        a = li[i].getElementsByTagName("h3")[0];
+        console.log(a);
         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = ""; 
+            showStudent[i].style.display = "block"; 
         } else {
-            li[i].style.display = "none";
+            showStudent[i].style.display = "none";
         }
     }
 };
 
+
+
 // Runs SearchField 
 searchField();
-
