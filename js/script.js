@@ -82,6 +82,7 @@ showPage(studentsPerPage, 1);
 
 // 
 const searchField = () => {
+    // Creates search button and field, place and styles it. 
     let searchDiv = document.createElement("div");
     searchDiv.className = "student-search"
     let searchDivPlacer = document.getElementsByClassName("page-header cf")[0];
@@ -89,7 +90,10 @@ const searchField = () => {
     let searchField = document.createElement("input");
     searchField.setAttribute("type", "text");
     searchField.placeholder = "Search for students..."
+    searchField.title = "Type in a name";
     searchDiv.appendChild(searchField);
+
+    searchField.id = "SearchInput";
     var btn = document.createElement("button");
     btn.className = "student-search button";
     let btnTxt = document.createTextNode("Search"); 
@@ -98,6 +102,21 @@ const searchField = () => {
     searchDiv.appendChild(btn);
     console.log("This is the end");
     searchDiv.style.cssFloat = "right";
+
+    // Creates search functionality // Code from:  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_list
+    let input, filter, ul, a, i;
+    input = document.getElementById("searchInput");
+    filter = input.value.toLocaleUpperCase();
+    ul = getElementsByClassName("student-list");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = ""; 
+        } else {
+            li[i].style.display = "none";
+        }
+    }
 };
 
 // Runs SearchField 
