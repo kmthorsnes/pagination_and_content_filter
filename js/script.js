@@ -79,3 +79,19 @@ showPage(studentsPerPage, 1);
 
 // Add functionality to the pagination buttons so that they show and hide the correct items
 // Tip: If you created a function above to show/hide list items, it could be helpful here
+
+// 
+const searchField = () => {
+    let searchDiv = document.createElement("div");
+    let searchDivPlacer = document.getElementsByClassName("page-header cf")[0];
+    searchDivPlacer.appendChild(searchDiv);
+    let searchField = document.createElement("input");
+    searchField.setAttribute("type", "text");
+    searchField.setAttribute("value", "Enter name");
+    searchDiv.appendChild(searchField);
+    console.log("im a searchfield");
+};
+
+// Runs SearchField 
+searchField();
+
