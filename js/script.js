@@ -115,17 +115,17 @@ const searchField = () => {
         console.log(li.length);
         for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByTagName("h3")[0];
-            console.log(a);
+            //console.log(a);
             if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 showStudent[i].style.display = "block";
             } else {
                 showStudent[i].style.display = "none";
             }
+            kuk = ('student-item:visible').length
+            console.log(li.length);
+                   
         }
-    
     };
-
-
 };
 
 
