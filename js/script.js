@@ -89,7 +89,13 @@ const searchField = () => {
     searchField.setAttribute("type", "text");
     searchField.setAttribute("value", "Enter name");
     searchDiv.appendChild(searchField);
-    console.log("im a searchfield");
+    var btn = document.createElement("button");
+    let btnTxt = document.createTextNode("Search"); 
+    document.body.appendChild(btn);
+    btn.appendChild(btnTxt); 
+    searchDiv.appendChild(btn);
+    console.log("This is the end");
+    searchDiv.align = "right";
 };
 
 // Runs SearchField 
