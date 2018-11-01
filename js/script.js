@@ -83,19 +83,21 @@ showPage(studentsPerPage, 1);
 // 
 const searchField = () => {
     let searchDiv = document.createElement("div");
+    searchDiv.className = "student-search"
     let searchDivPlacer = document.getElementsByClassName("page-header cf")[0];
     searchDivPlacer.appendChild(searchDiv);
     let searchField = document.createElement("input");
     searchField.setAttribute("type", "text");
-    searchField.setAttribute("value", "Enter name");
+    searchField.placeholder = "Search for students..."
     searchDiv.appendChild(searchField);
     var btn = document.createElement("button");
+    btn.className = "student-search button";
     let btnTxt = document.createTextNode("Search"); 
     document.body.appendChild(btn);
     btn.appendChild(btnTxt); 
     searchDiv.appendChild(btn);
     console.log("This is the end");
-    searchDiv.align = "right";
+    searchDiv.style.cssFloat = "right";
 };
 
 // Runs SearchField 
