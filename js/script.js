@@ -96,36 +96,35 @@ const searchField = () => {
     searchField.id = "Input";
     var btn = document.createElement("button");
     btn.className = "student-search button";
+    btn.id = "btnid"
     let btnTxt = document.createTextNode("Search"); 
     document.body.appendChild(btn);
     btn.appendChild(btnTxt); 
     searchDiv.appendChild(btn);
-    console.log("This is the end");
     searchDiv.style.cssFloat = "right";
 
-    // Creates search functionality // Code from:  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_list
-    let input, filter, ul, a, i;
-    input = document.getElementById("Input");
-    
-    btn.onclick = function () { 
-        console.log("Thank you for clicking me <3");
+    // Creates search functionality // Code base from:  https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_list
+        
+    document.getElementById("btnid").addEventListener("click", function () {
+        input = document.getElementById("Input");
         filter = input.value.toLocaleUpperCase();
         ul = document.getElementsByClassName("student-list")[0];
         li = ul.getElementsByTagName("li");
-        console.log(li.length);
-        for (i = 0; i < li.length; i++) {
+        inputArray = []
+                for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByTagName("h3")[0];
-            //console.log(a);
+
             if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 showStudent[i].style.display = "block";
+                inputArray.push(input.value);
+                
             } else {
                 showStudent[i].style.display = "none";
             }
-            kuk = ('student-item:visible').length
-            console.log(li.length);
-                   
         }
-    };
+        console.log(input.value);
+        showPage(input.value);
+        });
 };
 
 
