@@ -83,7 +83,6 @@ let searchField = () => {
     searchField.placeholder = "Search for students..."
     searchField.title = "Type in a name";
     searchDiv.appendChild(searchField);
-
     searchField.id = "Input";
     var btn = document.createElement("button");
     btn.className = "student-search button";
@@ -110,26 +109,27 @@ let searchField = () => {
                 
              } else {
                  showStudent[i].style.display = "none";
+                console.log("no persons found");
+                let noResultsDiv = document.createElement("div");
+                noResultsDiv.className = "error-message"
+                let noResultsDivPlacer = document.getElementsByClassName("student-list")[0];
+                let NoResultParagraph = document.createElement("p");
+                noResultsDivPlacer.appendChild(NoResultParagraph);
+                NoResultParagraph.innerHTML = "No student found";
+
      }
         }
-        console.log("the number of persons found:" + inputArray.length, inputArray);
+        numberOfStudents = inputArray.length;
+        let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
+        console.log("the number of persons found:" + numberOfStudents, totalPages);
+        showPage(studentsPerPage);
+        appendPageLinks(totalPages);
+        
     });
 };
 
 // Runs appenPageLinks for creating pagination
 appendPageLinks(totalPages);
 // Runs showPage function and starts on first page
-showPage(studentsPerPage, 1);
+showPage(studentsPerPage, 1 );
 searchField();
-
-
-// for (i = 0; i < li.length; i++) {
-//     a = li[i].getElementsByTagName("h3")[0];
-//     if (a.innerHTML.toUpperCase().indexOf(filter) >= 0) {
-//         showStudent[i].style.display = "block";
-//         inputArray.push(input.value);
-
-//     } else {
-//         showStudent[i].style.display = "none";
-//     }
-// }
