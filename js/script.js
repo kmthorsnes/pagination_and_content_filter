@@ -108,24 +108,27 @@ let searchField = () => {
                 showStudent[i].style.display = "block";
                 
              } else {
-                 showStudent[i].style.display = "none";
+                showStudent[i].style.display = "none";
                 console.log("no persons found");
-                let noResultsDiv = document.createElement("div");
-                noResultsDiv.className = "error-message"
-                let noResultsDivPlacer = document.getElementsByClassName("student-list")[0];
-                let NoResultParagraph = document.createElement("p");
-                noResultsDivPlacer.appendChild(NoResultParagraph);
-                NoResultParagraph.innerHTML = "No student found";
-
-     }
+                
+                    }
         }
         numberOfStudents = inputArray.length;
+        if (numberOfStudents = 0) {
+            let noResultsDiv = document.createElement("div");
+            noResultsDiv.className = "error-message"
+            let noResultsDivPlacer = document.getElementsByClassName("student-list")[0];
+            let NoResultParagraph = document.createElement("p");
+            NoResultParagraph.id = "errorId"
+            noResultsDivPlacer.appendChild(NoResultParagraph);
+            NoResultParagraph.innerHTML = "No student found";
+            }            
+        console.log(numberOfStudents);
         let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
         console.log("the number of persons found:" + numberOfStudents, totalPages);
         showPage(studentsPerPage);
         appendPageLinks(totalPages);
-        
-    });
+            });
 };
 
 // Runs appenPageLinks for creating pagination
