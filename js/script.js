@@ -16,9 +16,9 @@ let showStudent = document.getElementsByClassName('student-item');
 
 // Create a function that hides all students except the 10 we want to show
 let showPage = (list, pageNumber) => {
-    min = (list * pageNumber) - (list);
-    max = (list * pageNumber);
-    for (i = 0; i < numberOfStudents; i++)
+    min = pageNumber * studentsPerPage - studentsPerPage;
+    max = pageNumber * studentsPerPage - 1;
+    for (i = 0; i < list.length; i++)
         if (
             (i >= min) && (i <= max)
         ) {
@@ -27,6 +27,7 @@ let showPage = (list, pageNumber) => {
             showStudent[i].style.display = "none";
         }
 };
+showPage(showStudent, 1);
 
 // Creates and appends the pagination links
 let appendPageLinks = (list) => {
@@ -43,7 +44,7 @@ let appendPageLinks = (list) => {
     newDiv.appendChild(newUl);
 
     // loop for creating Li and a tags for pagination
-    for (i = 0; i < list; i++) {
+    for (i = 0; i < totalPages; i++) {
         // creates li and a tags for all pages
         let newLi = document.createElement("li");
         let newA = document.createElement("a");
@@ -52,17 +53,20 @@ let appendPageLinks = (list) => {
         newA.innerHTML += i + 1;
         let links = document.querySelectorAll("a");
         links[i].addEventListener("click", function () {
-            for (i = 0; i < list; i++) {
+            for (i = 0; i < totalPages; i++) {
                 let links = document.querySelectorAll("a");
                 links[i].classList.remove("active");
             }
             this.classList.add("active");
             currentPage = (document.getElementsByClassName('active')[0].innerHTML);
             console.log("You are on page " + currentPage, "kuk " + studentsPerPage);
-            showPage(studentsPerPage, currentPage);
-        });
+            showPage(list, currentPage);
+            });
     };
+    
 };
+appendPageLinks(showStudent);
+
 
 let searchField = () => {
     // Creates search button and field, place and styles it. 
@@ -125,7 +129,7 @@ let searchField = () => {
 };
 
 // Runs appenPageLinks for creating pagination
-appendPageLinks(totalPages);
+//appendPageLinks(totalPages);
 // Runs showPage function and starts on first page
-showPage(studentsPerPage, 1);
-searchField();
+// showPage(studentsPerPage, 1);
+// searchField();
