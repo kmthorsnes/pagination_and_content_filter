@@ -10,7 +10,7 @@ let numberOfStudents = document.getElementsByClassName('student-item').length;
 // Maximum number of students per page
 let studentsPerPage = 10;
 // Variable that calculates the numbers of pagination.  
-let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
+//let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
 // Getting all student info
 let showStudent = document.getElementsByClassName('student-item');
 
@@ -32,6 +32,7 @@ showPage(showStudent, 1);
 // Creates and appends the pagination links
 let appendPageLinks = (list) => {
     // removes pagination if it already exists
+    let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
     let removePagination = document.getElementsByClassName("pagination");
     while (removePagination.length > 0) removePagination[0].remove();
     let pageDiv = document.getElementsByClassName("page")[0];
@@ -59,13 +60,14 @@ let appendPageLinks = (list) => {
             }
             this.classList.add("active");
             currentPage = (document.getElementsByClassName('active')[0].innerHTML);
-            console.log("You are on page " + currentPage, "kuk " + studentsPerPage);
-            showPage(list, currentPage);
+            console.log("You are on page " + currentPage, "kuk " + list.length);
+            showPage(inputArray);
             });
     };
     
 };
 appendPageLinks(showStudent);
+
 
 
 let searchField = () => {
@@ -110,7 +112,11 @@ let searchField = () => {
                 showStudent[i].style.display = "none";
                 console.log("no persons found");
             }
-        }
+        
+        };
+
+
+
         numberOfStudents = inputArray.length;
         if (numberOfStudents == 0) {
             let noResultsDiv = document.createElement("div");
@@ -124,9 +130,11 @@ let searchField = () => {
         };
         let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
         console.log("the number of persons found:" + numberOfStudents, totalPages);
-        appendPageLinks(totalPages);
+        appendPageLinks(inputArray);
+        console.log(inputArray);
     });
 };
+searchField();
 
 // Runs appenPageLinks for creating pagination
 //appendPageLinks(totalPages);
