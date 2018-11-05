@@ -16,24 +16,16 @@ let showStudent = document.getElementsByClassName('student-item');
 
 // Create a function that hides all students except the 10 we want to show
 let showPage = (list, pageNumber) => {
+    min = (list * pageNumber) - (list);
+    max = (list * pageNumber);
     for (i = 0; i < numberOfStudents; i++)
         if (
-            (i >=
-                (
-                    (list * pageNumber) -
-                    (list)
-                )
-            )
-            &&
-            (i <
-                (list * pageNumber)
-            )
+            (i >= min) && (i < max)
         ) {
             showStudent[i].style.display = "block";
         } else {
             showStudent[i].style.display = "none";
         }
-
 };
 
 // Creates and appends the pagination links
@@ -121,14 +113,14 @@ let searchField = () => {
             let NoResultParagraph = document.createElement("p");
             NoResultParagraph.id = "errorId"
             noResultsDivPlacer.appendChild(NoResultParagraph);
-            NoResultParagraph.innerHTML = "No student found";
-            }            
-        console.log(numberOfStudents);
+            document.getElementById("errorID").innerHTML = "YOUR TEXT";
+            //NoResultParagraph.innerHTML = "No student found";
+            };            
         let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
         console.log("the number of persons found:" + numberOfStudents, totalPages);
         showPage(studentsPerPage);
         appendPageLinks(totalPages);
-            });
+    });
 };
 
 // Runs appenPageLinks for creating pagination
