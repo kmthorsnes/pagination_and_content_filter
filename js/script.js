@@ -101,11 +101,11 @@ let searchField = () => {
         filter = input.value.toLocaleUpperCase();
         ul = document.getElementsByClassName("student-list")[0];
         li = ul.getElementsByTagName("li");
-        inputArray = []
+        inputArray = [];
         for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByTagName("h3")[0];
             if (a.innerHTML.toUpperCase().indexOf(filter) >= 0) {
-                inputArray.push(input.value);
+                inputArray.push(li[i]);
                 showStudent[i].style.display = "block";
                 
 
@@ -133,7 +133,7 @@ let searchField = () => {
         let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
         console.log("the number of persons found:" + numberOfStudents, totalPages);
         appendPageLinks(inputArray);
-        showPage(inputArray, currentPage);
+        showPage(inputArray, 1);
     });
 };
 searchField();
@@ -143,3 +143,5 @@ searchField();
 // Runs showPage function and starts on first page
 // showPage(studentsPerPage, 1);
 // searchField();   
+
+
