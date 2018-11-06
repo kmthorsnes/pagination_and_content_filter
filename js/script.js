@@ -133,7 +133,7 @@ let searchField = () => {
         let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
         console.log("the number of persons found:" + numberOfStudents, totalPages);
         appendPageLinks(inputArray);
-        showPage(inputArray, 1);
+        showPage(inputArray, currentPage);
     });
 };
 searchField();
