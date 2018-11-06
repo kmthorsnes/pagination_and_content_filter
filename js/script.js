@@ -22,9 +22,9 @@ let showPage = (list, pageNumber) => {
         if (
             (i >= min) && (i <= max)
         ) {
-            showStudent[i].style.display = "block";
+            list[i].style.display = "block";
         } else {
-            showStudent[i].style.display = "none";
+            list[i].style.display = "none";
         }
 };
 showPage(showStudent, 1);
@@ -60,8 +60,7 @@ let appendPageLinks = (list) => {
             }
             this.classList.add("active");
             currentPage = (document.getElementsByClassName('active')[0].innerHTML);
-            console.log("You are on page " + currentPage, "kuk " + list.length);
-            showPage(inputArray);
+            console.log("You are on page " + currentPage, "Total number of students" + list.length);
             });
     };
     
@@ -107,6 +106,7 @@ let searchField = () => {
             if (a.innerHTML.toUpperCase().indexOf(filter) >= 0) {
                 inputArray.push(input.value);
                 showStudent[i].style.display = "block";
+                
 
             } else {
                 showStudent[i].style.display = "none";
@@ -114,6 +114,7 @@ let searchField = () => {
             }
         
         };
+        console.log(inputArray);
 
 
 
