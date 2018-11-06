@@ -60,7 +60,6 @@ let appendPageLinks = (list) => {
             // then adds active class to the link/button which just got clicked, then sets currentPage to equal that page
             this.classList.add("active");
             currentPage = (document.getElementsByClassName('active')[0].innerHTML);
-            console.log("You are on page " + currentPage, "Total number of students" + list.length);
             // calls the showPage function and use the argument passed in, in the showPage function together with currentpage
             showPage(list, currentPage);
         });
@@ -106,24 +105,20 @@ let searchField = () => {
         inputArray = [];
         // loops over all list elements
         for (i = 0; i < li.length; i++) {
-            
+            // selects all the names             
             a = li[i].getElementsByTagName("h3")[0];
+            // if search term match a student name then that students is pushed into empty array and set to be displayed
             if (a.innerHTML.toUpperCase().indexOf(filter) >= 0) {
                 inputArray.push(li[i]);
                 showStudent[i].style.display = "block";
-                
-
+            // if no match style is set to not be displayet
             } else {
                 showStudent[i].style.display = "none";
-                console.log("no persons found");
             }
-        
         };
-        console.log(inputArray);
-
-
-
+        // Gets the value of how many students which match the search term
         numberOfStudents = inputArray.length;
+        // If no students match the search term error message is created and shown to user
         if (numberOfStudents == 0) {
             let noResultsDiv = document.createElement("div");
             noResultsDiv.className = "error-message"
@@ -134,10 +129,10 @@ let searchField = () => {
             noResultsDiv.appendChild(noResultParagraph);
             noResultParagraph.innerHTML = "No student found";
         };
-        let totalPages = Math.ceil(numberOfStudents / maxStudentsPerPage);
-        console.log("the number of persons found:" + numberOfStudents, totalPages);
-        appendPageLinks(inputArray);
+        // Starts showPage function with the new list of students as argument, on the first page
         showPage(inputArray, 1);
+        // Starts appendPageLinks with the new list of students as argument
+        appendPageLinks(inputArray);
     });
 };
 
@@ -146,6 +141,4 @@ showPage(showStudent, 1);
 // Runs appenPageLinks for creating pagination
 appendPageLinks(showStudent);
 // Runs searcField function creating search functionality
-searchField();   
-
-
+searchField();
