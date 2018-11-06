@@ -61,6 +61,7 @@ let appendPageLinks = (list) => {
             this.classList.add("active");
             currentPage = (document.getElementsByClassName('active')[0].innerHTML);
             console.log("You are on page " + currentPage, "Total number of students" + list.length);
+            showPage(list, currentPage);
             });
     };
     
@@ -132,7 +133,7 @@ let searchField = () => {
         let totalPages = Math.ceil(numberOfStudents / studentsPerPage);
         console.log("the number of persons found:" + numberOfStudents, totalPages);
         appendPageLinks(inputArray);
-        console.log(inputArray);
+        showPage(inputArray, 1);
     });
 };
 searchField();
@@ -141,4 +142,4 @@ searchField();
 //appendPageLinks(totalPages);
 // Runs showPage function and starts on first page
 // showPage(studentsPerPage, 1);
-// searchField();
+// searchField();   
